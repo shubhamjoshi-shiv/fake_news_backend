@@ -7,11 +7,11 @@ from rest_framework.decorators import api_view
 from .apps import CompaniesConfig
 # Create your views here.
 
-@api_view(['GET'])
+@api_view(['GET'])#ye function ki property ko change karta hai decorator
 def test_article(request):
     text = request.query_params.get('article')
     text = wordopt(text)
-    if len(text)==0:
+    if len(text)==0:# apna model empty ko false bolega
         return Response('Could not process the article', status=400)
     return Response(predict(text))
 
@@ -38,7 +38,7 @@ def predict(text):
         result = True
     return {'result': result}
 
-def wordopt(text):
+def wordopt(text):#puntuation aur link hata dega thoda cleen karega
     text = text.lower()
     text = re.sub('\[.*?\]', '', text)
     text = re.sub("\\W"," ",text) 

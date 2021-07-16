@@ -17,7 +17,7 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 urlpatterns = [
-    path('test', views.test_article),
+    path('test', views.test_article),#---
     path('testurl', views.test_url)
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
