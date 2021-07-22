@@ -16,9 +16,10 @@ Including another URLconf
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
-    path('test', views.test_article),#---
+    path('test', views.test_article),  # ---
     path('testurl', views.test_url)
-]
-urlpatterns=format_suffix_patterns(urlpatterns)
-
+] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+urlpatterns = format_suffix_patterns(urlpatterns)
